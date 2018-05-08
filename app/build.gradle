@@ -33,6 +33,7 @@ dependencies {
 
     //importadas
     compile 'com.google.code.gson:gson:2.8.2'
+    compile 'com.google.code.gson:gson:2.8.2'
     compile 'com.squareup.retrofit2:retrofit:2.4.0'
     compile 'com.squareup.retrofit2:converter-gson:2.4.0'
     //IMPORTANTE: Para resolver el error de la clase pasada, fue necesario disminuir la version de glide
