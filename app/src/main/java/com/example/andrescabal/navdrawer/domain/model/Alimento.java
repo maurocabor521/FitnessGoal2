@@ -1,16 +1,28 @@
 package com.example.andrescabal.navdrawer.domain.model;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by Andrés Cabal on 6/05/2018.
  */
 
 public class Alimento {
+    @SerializedName("nombre")
     private String nameAlimento;
     private Double calorias;
     private Double proteinas;
     private Double grasas;
     private Double carbohidratos;
     private Double racion;
+    private String imagen;
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
 
     public String getNameAlimento() {
         return nameAlimento;

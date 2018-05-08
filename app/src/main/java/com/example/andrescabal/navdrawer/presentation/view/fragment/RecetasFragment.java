@@ -7,10 +7,13 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.andrescabal.navdrawer.R;
+import com.example.andrescabal.navdrawer.presentation.contract.CategoriaAlimentosContract;
+import com.example.andrescabal.navdrawer.presentation.presenter.CategoriaAlimentosPresenter;
 import com.example.andrescabal.navdrawer.presentation.view.activity.CategoriaAlimentosActivity;
 import com.example.andrescabal.navdrawer.presentation.view.adapter.SpinnerAdapter;
 
@@ -25,13 +28,13 @@ import java.util.List;
  * Use the {@link RecetasFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class RecetasFragment extends Fragment {
+public class RecetasFragment extends Fragment implements CategoriaAlimentosContract.View {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-
+    private CategoriaAlimentosContract.Presenter presenter;
     private SpinnerAdapter spinnerAdapter;
     private List<String> lstNombresAlimentos;
     private Spinner spinner;
@@ -80,21 +83,22 @@ public class RecetasFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_recetas, container, false);
+
+
         View view = inflater.inflate(R.layout.fragment_recetas, container, false);
+        //presenter=new C
+
+
+        //lstNombresAlimentos = new ArrayList<>(0);
         lstNombresAlimentos = new ArrayList<>();
-        lstNombresAlimentos.add("casa");
+        /*lstNombresAlimentos.add("casa");
         lstNombresAlimentos.add("carro");
-        lstNombresAlimentos.add("moto");
-        Context context;
-        if (view != null) {
-            categoriaAlimentosActivity=new CategoriaAlimentosActivity();
-            //context=categoriaAlimentosActivity.getContext();
-            context=getContext();
-            spinnerAdapter = new SpinnerAdapter(context, lstNombresAlimentos);
-            //Toast.makeText(getContext(),"if view",Toast.LENGTH_SHORT).show();
-        }
+        lstNombresAlimentos.add("moto");*/
         spinner=(Spinner)view.findViewById(R.id.spinner);
-        spinner.setAdapter(spinnerAdapter.construirAdapter());
+       presenter=new CategoriaAlimentosPresenter(this);
+       presenter.loadListaAlimentos();
+        Toast.makeText(getContext(),"on create presenter fragment",Toast.LENGTH_SHORT).show();
+
         return view;
     }
 
@@ -120,6 +124,30 @@ public class RecetasFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void disableButtons() {
+
+    }
+
+    @Override
+    public void showListaAlimentos() {
+        lstNombresAlimentos=presenter.getLstNombreAlimentos();
+        int sizeList=lstNombresAlimentos.size();
+
+        if(lstNombresAlimentos!=null){
+            Toast.makeText(getContext(),"lista con nombre "+sizeList,Toast.LENGTH_SHORT).show();
+        }
+        Context context;
+        //if (view != null) {
+            //categoriaAlimentosActivity=new CategoriaAlimentosActivity();
+            //context=categoriaAlimentosActivity.getContext();
+            context=getContext();
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, lstNombresAlimentos);
+        // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
     }
 
     /**

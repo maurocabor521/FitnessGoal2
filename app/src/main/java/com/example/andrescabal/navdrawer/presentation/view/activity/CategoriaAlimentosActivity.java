@@ -11,9 +11,11 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.andrescabal.navdrawer.R;
+import com.example.andrescabal.navdrawer.presentation.contract.CategoriaAlimentosContract;
 import com.example.andrescabal.navdrawer.presentation.view.fragment.RecetasFragment;
 
-public class CategoriaAlimentosActivity extends AppCompatActivity implements View.OnClickListener,RecetasFragment.OnFragmentInteractionListener {
+public class CategoriaAlimentosActivity extends AppCompatActivity implements View.OnClickListener,
+        RecetasFragment.OnFragmentInteractionListener {
 
     private Button btn_recetas;
     private Button btn_alimentos;
@@ -76,4 +78,6 @@ public class CategoriaAlimentosActivity extends AppCompatActivity implements Vie
         Context context=this.getContext();
         return  context;
     }
+
+
 }
