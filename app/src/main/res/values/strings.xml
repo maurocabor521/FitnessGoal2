@@ -18,6 +18,7 @@
     <string name="Recetas">Recetas</string>
     <string name="Agregar_Alimento">Agregar Alimento</string>
     <string name="Ingresar_Receta">Ingresar Receta</string>
+    <string name="Categoria_Alimentos">Categoria Alimentos</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

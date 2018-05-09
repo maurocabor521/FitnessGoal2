@@ -1,5 +1,6 @@
 package com.example.andrescabal.navdrawer.presentation.presenter;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.view.View;
 import android.widget.Toast;
@@ -32,6 +33,7 @@ public class CategoriaAlimentosPresenter implements CategoriaAlimentosContract.P
     private List<String> lstNombresAlimentos;
     private AlimentosRepository alimentosRepository;
     private RecetasFragment recetasFragment;
+    private Context context;
 
     public CategoriaAlimentosPresenter(CategoriaAlimentosContract.View view) {
          this.view = view;
@@ -42,6 +44,7 @@ public class CategoriaAlimentosPresenter implements CategoriaAlimentosContract.P
         lstNombresAlimentos = new ArrayList<>(0);
         //cargarAlimentos();
         this.recetasFragment=new RecetasFragment();
+
     }
 
     @Override
@@ -72,6 +75,7 @@ public class CategoriaAlimentosPresenter implements CategoriaAlimentosContract.P
                 lstAlimentos.addAll(result);
 
                 lstNombresAlimentos.clear();
+                lstNombresAlimentos.add("Seleccione Alimento");
                 for (Alimento alimento : lstAlimentos) {
                     lstNombresAlimentos.add(alimento.getNameAlimento());
                 }
@@ -83,6 +87,11 @@ public class CategoriaAlimentosPresenter implements CategoriaAlimentosContract.P
                 error.printStackTrace();
             }
         });
+    }
+
+    @Override
+    public void crearReceta(Context context, String nombre, List<String> alimentos) {
+        recetasUseCase.setReceta(context,nombre,alimentos);
     }
 
 

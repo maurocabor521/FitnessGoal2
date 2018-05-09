@@ -2,6 +2,7 @@ package com.example.andrescabal.navdrawer.presentation.view.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.view.View;
@@ -28,14 +29,14 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
-        });
+        });*/
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -49,13 +50,16 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
         }
+
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -72,7 +76,8 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.nav_alimentacionMenu) {
+            goToActivity("alimentacion");
             return true;
         }
 
@@ -89,7 +94,7 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_objetivos) {
 
-        } else if (id == R.id.nav_alimentacion) {
+        } else if ((id == R.id.nav_alimentacion) || (id == R.id.nav_alimentacionMenu)) {
             goToActivity("alimentacion");
             Toast.makeText(this, "goToActivity", Toast.LENGTH_SHORT).show();
 
@@ -111,7 +116,7 @@ public class MainActivity extends AppCompatActivity
         if (itemMenu == "alimentacion") {
             Intent intent = new Intent(this, CategoriaAlimentosActivity.class);
             startActivity(intent);
-            finish();
+            //finish(); //quita de la pila , no permite retorno
         } else if (itemMenu == "ejercicios") {
             //TODO FALTA POR IMPLEMENTAR
         }
@@ -120,5 +125,10 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void showLoginErrorMessage(Throwable error) {
 
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
     }
 }

@@ -1,6 +1,7 @@
 package com.example.andrescabal.navdrawer.presentation.view.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -34,6 +35,14 @@ public class CategoriaAlimentosActivity extends AppCompatActivity implements Vie
         btn_Registros.setOnClickListener(this);
 
     }
+/*
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        super.onBackPressed();
+    }
+    */
 
     @Override
     public void onClick(View v) {

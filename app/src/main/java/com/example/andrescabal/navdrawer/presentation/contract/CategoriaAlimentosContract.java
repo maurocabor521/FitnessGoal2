@@ -1,5 +1,7 @@
 package com.example.andrescabal.navdrawer.presentation.contract;
 
+import android.content.Context;
+
 import com.example.andrescabal.navdrawer.domain.model.Alimento;
 
 import java.util.List;
@@ -16,9 +18,12 @@ public interface CategoriaAlimentosContract {
         List<String> getLstNombreAlimentos();
         //llama el caso de uso
         void loadListaAlimentos();
+
+        void crearReceta(Context context,String nombre, List<String>alimentos);
     }
     interface View{
         void disableButtons();
         void showListaAlimentos();
+        void getAdapter();
     }
 }

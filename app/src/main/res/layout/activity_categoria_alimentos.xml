@@ -4,8 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/side_nav_bar"
     tools:context="com.example.andrescabal.navdrawer.presentation.view.activity.CategoriaAlimentosActivity"
     tools:layout_editor_absoluteY="81dp">
+
+
 
     <Button
         android:id="@+id/btRecetas"

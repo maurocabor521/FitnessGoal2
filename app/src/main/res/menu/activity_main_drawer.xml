@@ -6,19 +6,19 @@
 
         <item
             android:id="@+id/nav_objetivos"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_objetivos_24"
             android:title="@string/Objetivos" />
         <item
             android:id="@+id/nav_alimentacion"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_comida_24"
             android:title="@string/Alimentacion" />
         <item
             android:id="@+id/nav_ejercicios"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_ejercicio_24"
             android:title="@string/Ejercicios" />
         <item
             android:id="@+id/nav_reportes"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/ic_informes_24"
             android:title="@string/Reportes" />
     </group>
 
@@ -27,11 +27,11 @@
         <menu>
             <item
                 android:id="@+id/nav_configuracion"
-                android:icon="@drawable/ic_menu_share"
+                android:icon="@drawable/ic_configuracion_24"
                 android:title="@string/Configuracion" />
             <item
                 android:id="@+id/nav_acerca_de"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/ic_acerca_de_24"
                 android:title="@string/Acerca_de" />
         </menu>
     </item>
